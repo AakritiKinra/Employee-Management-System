@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='vendor/nouislider/nouislider.min.css') }}">
+    <!-- Main css -->
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
+    </div>
+    {% endblock %}
+
+    <div class="main">
+
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="static/images/pexels-mohan-reddy-atalu-2403785.jpg" alt="">            
+                    <div class="signup-img-content">
+                        <h2>Registration</h2>
+                    </div>
+                </div>
+                <div class="signup-form">
+                    <form action="{{ url_for('registration') }}" method="POST" class="register-form" id="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="e_id" class="required">ID Number</label>
+                                    <input type="text" name="e_id" id="e_id" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="username" class="required">Username</label>
+                                    <input type="text" name="username" id="username" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="password" class="required">Password</label>
+                                    <input type="password" name="password" id="password" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="role" class="required">Role</label>
+                                    <input type="text" name="role" id="role" />
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Submit" class="submit" id="submit" name="submit" formmethod="POST" />
+                            <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
+                        </div>
+                        <div class="form-input">
+                            <a href="{{ url_for('login') }}" style="float: right;">Already registered? Click here.</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/nouislider/nouislider.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/wnumb/wNumb.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-validation/dist/additional-methods.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
